@@ -97,38 +97,3 @@ ACPartnerPlugBaseOutlet.prototype.setPower = function(value, callback) {
     });
 }
 
-ACPartnerPlugBaseOutlet = function(dThis) {
-    this.device = dThis.device;
-    this.name = dThis.config['temperatureName'];
-    this.platform = dThis.platform;
-}
-
-MiPlugBaseTemperature.prototype.getServices = function() {
-    var services = [];
-
-    var infoService = new Service.AccessoryInformation();
-    infoService
-        .setCharacteristic(Characteristic.Manufacturer, "XiaoMi")
-        .setCharacteristic(Characteristic.Model, "Plug Base")
-        .setCharacteristic(Characteristic.SerialNumber, "Undefined");
-    services.push(infoService);
-    
-    var temperatureService = new Service.TemperatureSensor(this.name);
-    temperatureService
-        .getCharacteristic(Characteristic.CurrentTemperature)
-        .on('get', this.getTemperature.bind(this))
-    services.push(temperatureService);
-
-    return services;
-}
-
-MiPlugBaseTemperature.prototype.getTemperature = function(callback) {
-    var that = this;
-    this.device.call("get_prop", ["temperature"]).then(result => {
-        that.platform.log.debug("[MiOutletPlatform][DEBUG]MiPlugBase - Temperature - getTemperature: " + result);
-        callback(null, result[0]);
-    }).catch(function(err) {
-        that.platform.log.error("[MiOutletPlatform][ERROR]MiPlugBase - Temperature - getTemperature Error: " + err);
-        callback(err);
-    });
-}
