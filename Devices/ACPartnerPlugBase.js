@@ -62,22 +62,22 @@ ACPartnerPlugBaseOutlet.prototype.getServices = function() {
 
 MiPlugBaseOutlet.prototype.getOutletInUse = function(callback) {
     var that = this;
-    this.device.call("get_device_prop", ["power"]).then(result => {
-        that.platform.log.debug("[MiOutletPlatform][DEBUG]MiPlugBase - Outlet - getOutletInUse: " + result);
+    this.device.call("get_device_prop", ["lumi.0","plug_state"]).then(result => {
+        that.platform.log.debug("[MiOutletPlatform][DEBUG]ACPartnerPlugBase - Outlet - getOutletInUse: " + result);
         callback(null, result[0] === 'on' ? true : false);
     }).catch(function(err) {
-        that.platform.log.error("[MiOutletPlatform][ERROR]MiPlugBase - Outlet - getOutletInUse Error: " + err);
+        that.platform.log.error("[MiOutletPlatform][ERROR]ACPartnerPlugBase - Outlet - getOutletInUse Error: " + err);
         callback(err);
     });
 }
 
 MiPlugBaseOutlet.prototype.getPower = function(callback) {
     var that = this;
-    this.device.call("get_device_prop", ["lumi.0","power"]).then(result => {
-        that.platform.log.debug("[MiOutletPlatform][DEBUG]MiPlugBase - Outlet - getPower: " + result);
+    this.device.call("get_device_prop", ["lumi.0","plug_state"]).then(result => {
+        that.platform.log.debug("[MiOutletPlatform][DEBUG]ACPartnerPlugBase- Outlet - getPowerState: " + result);
         callback(null, result[0] === 'on' ? true : false);
     }).catch(function(err) {
-        that.platform.log.error("[MiOutletPlatform][ERROR]MiPlugBase - Outlet - getPower Error: " + err);
+        that.platform.log.error("[MiOutletPlatform][ERROR]ACPartnerPlugBase - Outlet - getPowerState Error: " + err);
         callback(err);
     });
 }
