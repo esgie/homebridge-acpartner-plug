@@ -4,7 +4,7 @@ require('./Devices/MiIntelligencePinboard');
 require('./Devices/MiQingPinboard');
 require('./Devices/MiQingPinboardWithUSB');
 require('./Devices/MiPlugBaseEnhanced');
-require('./Devices/ACPartnerOutletBase');
+require('./Devices/ACPartnerBase');
 
 var fs = require('fs');
 var packageFile = require("./package.json");
