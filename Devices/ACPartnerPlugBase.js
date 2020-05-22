@@ -60,7 +60,7 @@ ACPartnerPlugBaseOutlet.prototype.getServices = function() {
     return services;
 }
 
-MiPlugBaseOutlet.prototype.getOutletInUse = function(callback) {
+ACPartnerPlugBaseOutlet.prototype.getOutletInUse = function(callback) {
     var that = this;
     this.device.call("get_device_prop", ["lumi.0","plug_state"]).then(result => {
         that.platform.log.debug("[MiOutletPlatform][DEBUG]ACPartnerPlugBase - Outlet - getOutletInUse: " + result);
@@ -71,28 +71,28 @@ MiPlugBaseOutlet.prototype.getOutletInUse = function(callback) {
     });
 }
 
-MiPlugBaseOutlet.prototype.getPower = function(callback) {
+ACPartnerPlugBaseOutlet.prototype.getPower = function(callback) {
     var that = this;
     this.device.call("get_device_prop", ["lumi.0","plug_state"]).then(result => {
-        that.platform.log.debug("[MiOutletPlatform][DEBUG]ACPartnerPlugBase- Outlet - getPowerState: " + result);
+        that.platform.log.debug("[MiOutletPlatform][DEBUG]ACPartnerPlugBase- Outlet - getPower: " + result);
         callback(null, result[0] === 'on' ? true : false);
     }).catch(function(err) {
-        that.platform.log.error("[MiOutletPlatform][ERROR]ACPartnerPlugBase - Outlet - getPowerState Error: " + err);
+        that.platform.log.error("[MiOutletPlatform][ERROR]ACPartnerPlugBase - Outlet - getPower Error: " + err);
         callback(err);
     });
 }
 
-MiPlugBaseOutlet.prototype.setPower = function(value, callback) {
+ACPartnerPlugBaseOutlet.prototype.setPower = function(value, callback) {
     var that = this;
-    that.device.call("set_power", [value ? "on" : "off"]).then(result => {
-        that.platform.log.debug("[MiOutletPlatform][DEBUG]MiPlugBase - Outlet - setPower Result: " + result);
+    that.device.call("toggle_plug", [value ? "on" : "off"]).then(result => {
+        that.platform.log.debug("[MiOutletPlatform][DEBUG]ACPartnerPlugBase - Outlet - setPower Result: " + result);
         if(result[0] === "ok") {
             callback(null);
         } else {
             callback(new Error(result[0]));
         }
     }).catch(function(err) {
-        that.platform.log.error("[MiOutletPlatform][ERROR]MiPlugBase - Outlet - setPower Error: " + err);
+        that.platform.log.error("[MiOutletPlatform][ERROR]ACPartnerPlugBase - Outlet - setPower Error: " + err);
         callback(err);
     });
 }
