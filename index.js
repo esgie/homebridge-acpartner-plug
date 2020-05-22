@@ -4,7 +4,7 @@ require('./Devices/MiIntelligencePinboard');
 require('./Devices/MiQingPinboard');
 require('./Devices/MiQingPinboardWithUSB');
 require('./Devices/MiPlugBaseEnhanced');
-require('./Devices/ACPartnerBase');
+require('./Devices/ACPartnerPlugBase');
 
 var fs = require('fs');
 var packageFile = require("./package.json");
@@ -108,8 +108,8 @@ MiOutletPlatform.prototype = {
                     new MiPlugBaseEnhanced(this, deviceCfg).forEach(function(accessory, index, arr){
                         myAccessories.push(accessory);
                     });
-                } else if (deviceCfg['type'] == "ACPartnerBase") {
-                    new ACPartnerBase(this, deviceCfg).forEach(function(accessory, index, arr){
+                } else if (deviceCfg['type'] == "ACPartnerPlugBase") {
+                    new ACPartnerPlugBase(this, deviceCfg).forEach(function(accessory, index, arr){
                         myAccessories.push(accessory);
                     });
                 } else {
