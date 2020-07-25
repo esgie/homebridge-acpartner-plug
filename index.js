@@ -59,7 +59,7 @@ function AcPartnerPlugPlatform(log, config, api) {
     }
 }
 
-MiOutletPlatform.prototype = {
+AcPartnerPlugPlatform.prototype = {
     accessories: function(callback) {
         var myAccessories = [];
 
