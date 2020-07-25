@@ -1,29 +1,30 @@
 {
-  "name": "homebridge-mi-outlet",
-  "version": "0.3.0",
-  "description": "XiaoMi outlet plugins for HomeBridge(https://github.com/nfarina/homebridge).",
+  "name": "homebridge-acpartner-plug",
+  "version": "0.0.1",
+  "description": "Aqara Ac Partner v2 Power Outlet plugin for HomeBridge(https://github.com/nfarina/homebridge).",
   "keywords": [
     "homebridge-plugin",
     "xiaomi",
     "mi",
     "outlet",
     "plug",
-    "socket"
+    "aqara",
+    "acpartner"
   ],
   "author": "YinHang",
-  "homepage": "https://github.com/YinHangCode/homebridge-mi-outlet",
+  "homepage": "https://github.com/esgie/homebridge-acpartner-plug",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YinHangCode/homebridge-mi-outlet"
+    "url": "https://github.com/esgie/homebridge-acpartner-plug"
   },
   "bugs": {
-    "url": "https://github.com/YinHangCode/homebridge-mi-outlet/issues"
+    "url": "https://github.com/esgie/homebridge-acpartner-plug/issues"
   },
   "engines": {
     "node": ">=7.0.0",
     "homebridge": ">=0.4.1"
   },
   "dependencies": {
-    "miio": "0.14.1"
+    "miio": "0.15.6"
   }
 }
