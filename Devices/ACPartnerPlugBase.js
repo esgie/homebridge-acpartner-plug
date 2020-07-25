@@ -42,8 +42,8 @@ ACPartnerPlugBaseOutlet.prototype.getServices = function() {
 
     var infoService = new Service.AccessoryInformation();
     infoService
-        .setCharacteristic(Characteristic.Manufacturer, "XiaoMi")
-        .setCharacteristic(Characteristic.Model, "Plug Base")
+        .setCharacteristic(Characteristic.Manufacturer, "Lumi United Co., Ltd.")
+        .setCharacteristic(Characteristic.Model, "AC Partner")
         .setCharacteristic(Characteristic.SerialNumber, "Undefined");
     services.push(infoService);
     
